@@ -1,0 +1,48 @@
+<!--<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">-->
+<!--<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">-->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+<div class="row ml-2 mr-2 mt-5">
+  <div class="card shadow mb-4 p-3" style="width: 100%;">
+    <h2 style="text-align: center">Danh sách bài viết</h2>
+    <table class="table table-striped">
+
+      <thead>
+      <tr style="font-weight: bold; color: black">
+        <th scope="col">Id</th>
+        <th scope="col">Nội dung</th>
+        <th scope="col">Danh mục</th>
+        <th scope="col">Thể loại</th>
+         <th scope="col">Trạng thái</th>
+        <th scope="col">Ngày tạo</th>
+        <th scope="col">Tác giả</th>
+        <!-- <th scope="col">Lượt thich</th> -->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let post of listPost | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total}; let i = index">
+        <th scope="row">{{post.id}}</th>
+        <td>
+          <a [routerLink]="['/users/posts', post.id]"  target="_blank">{{post.title}}</a></td>
+        <td><a [routerLink]="['/users/link-docs', post.category?.id]" target="_blank">{{post.category?.name}}</a></td>
+        <!-- <td>{{post.description}}</td> -->
+        <td *ngIf="post.description == '1'">Bài viết</td>
+        <td *ngIf="post.description == '2'">Câu hỏi</td>
+        <td *ngIf="post.description == null || post.description == undefined || post.description == ''">Khác</td>
+        <td *ngIf="post.status == '1'" class="text-success">Mở</td>
+        <td *ngIf="post.status == '0'" class="text-danger">Khoá</td>
+        <td>{{post.createAt | date:"yy/mm/dd" }}</td>
+        <td><a [routerLink]="['/users/user-info', post.user?.id]" target="_blank">{{post.user?.username}}</a></td>
+       
+        <td><i (click)="deletePost(post.id)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+          </svg> </i></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 align-content-center">
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+</div>

@@ -1,0 +1,138 @@
+<main id="tt-pageContent">
+    <div class="container">
+        <div class="tt-catSingle-title">
+            <div class="tt-innerwrapper tt-row">
+                <div class="tt-col-left">
+                    <ul class="tt-list-badge">
+                        <li><a href="#"><span class="tt-color01 tt-badge">{{category.name}}</span></a></li>
+                    </ul>
+                </div>
+                <div class="ml-left tt-col-right">
+                    <div class="tt-col-item">
+                        <h2 class="tt-value">Bài viết - {{countPost}}</h2>
+                    </div>
+                    <div class="tt-col-item">
+                        <a href="#" class="tt-btn-icon">
+                            <i class="tt-icon"><svg><use xlink:href="#icon-favorite"></use></svg></i>
+                        </a>
+                    </div>
+                    <!-- <div class="tt-col-item">
+                        <div class="tt-search">
+                            <button class="tt-search-toggle" data-toggle="modal" data-target="#modalAdvancedSearch">
+                               <svg class="tt-icon">
+                                  <use xlink:href="#icon-search"></use>
+                                </svg>
+                            </button>
+                            <form class="search-wrapper">
+                                <div class="search-form">
+                                    <input type="text" class="tt-search__input" placeholder="Search in politics">
+                                    <button class="tt-search__btn" type="submit">
+                                       <svg class="tt-icon">
+                                          <use xlink:href="#icon-search"></use>
+                                        </svg>
+                                    </button>
+                                     <button class="tt-search__close">
+                                       <svg class="tt-icon">
+                                          <use xlink:href="#icon-cancel"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="tt-innerwrapper">
+                {{category.description}}
+            </div>
+            <!-- <div class="tt-innerwrapper">
+                <h6 class="tt-title">Similar TAGS</h6>
+                <ul class="tt-list-badge">
+                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
+                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
+                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
+                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
+                    <li><a href="#"><span class="tt-badge">foreign policy</span></a></li>
+                    <li><a href="#"><span class="tt-badge">world politics</span></a></li>
+                    <li><a href="#"><span class="tt-badge">human rights</span></a></li>
+                    <li><a href="#"><span class="tt-badge">trump</span></a></li>
+                    <li><a href="#"><span class="tt-badge">climate change</span></a></li>
+                </ul>
+            </div> -->
+        </div>
+        <div class="tt-topic-list">
+            <div class="tt-list-header">
+                <div class="tt-col-topic">Bài viết</div>
+                <div class="tt-col-topic">Danh mục</div>
+                <div class="tt-col-value hide-mobile">Loại</div>
+                <!-- <div class="tt-col-value hide-mobile">Replies</div>
+                <div class="tt-col-value hide-mobile">Views</div> -->
+                <div class="tt-col-value">Ngày</div>
+            </div>
+            <div class="tt-item" *ngFor="let post of listPost | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total}; let i = index">
+                <div class="tt-col-avatar">
+                    <!-- <svg class="tt-icon">
+                      <use xlink:href="#icon-ava-c"></use>
+                    </svg> -->
+                    <img src="{{post.user?.avatar}}" alt="" style="height: 50px; border-radius: 50%;">
+                </div>
+                <div class="tt-col-description">
+                    <h6 class="tt-title"><a [routerLink]="['/users/post', post.id]">
+                            <svg class="tt-icon">
+                                <use xlink:href="#icon-pinned"></use>
+                            </svg>
+                            {{post?.title}}
+                        </a></h6>
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-11">
+                            <ul class="tt-list-badge">
+                                <!-- <li class="show-mobile"><a href="#"><span class="tt-color01 tt-badge">politics</span></a>
+                                </li> -->
+                                <li><a [routerLink]="['/users/user', post.user?.id]"><span
+                                            class="tt-badge">{{post.user?.username}}</span></a></li>
+                                <!-- <li><a href="#"><span class="tt-badge">authors</span></a></li> -->
+                            </ul>
+                        </div>
+                        <div class="col-1 ml-auto show-mobile">
+                            <div class="tt-value">{{post.createAt | date:"dd"}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tt-col-description"><span class="tt-color01 tt-badge" style="color: white;">{{post.category?.name}}</span></div>
+            <!-- <div class="tt-col-value hide-mobile">985</div> -->
+            <div *ngIf="post.description == '1'" class="tt-col-value tt-color-select hide-mobile">Bài viết</div>
+            <div *ngIf="post.description == '2'" class="tt-col-value tt-color-select hide-mobile">Câu hỏi</div>
+            <div *ngIf="post.description == null || post.description == undefined" class="tt-col-value tt-color-select hide-mobile">Khác</div>
+            <!-- <div class="tt-col-value hide-mobile">15.1k</div> -->
+            <div class="tt-col-value hide-mobile">{{post.createAt | date:'yyyy-MM-dd' }}</div>
+            </div>
+            <div class="tt-row-btn">
+                <!-- <button type="button" class="btn-icon js-topiclist-showmore">
+                    <svg class="tt-icon">
+                      <use xlink:href="#icon-load_lore_icon"></use>
+                    </svg>
+                </button> -->
+                <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- MODAL -->
+<div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerFail1">Lỗi hệ thống</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{error}}
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

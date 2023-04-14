@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="tt-topic-list">
+        <div class="tt-list-header">
+            <div class="tt-col-topic">Bài viết</div>
+            <div class="tt-col-topic">Danh mục</div>
+            <div class="tt-col-value hide-mobile">Loại</div>
+            <!-- <div class="tt-col-value hide-mobile">Loại</div> -->
+            <!-- <div class="tt-col-value hide-mobile">Views</div> -->
+            <div class="tt-col-value">Ngày</div>
+        </div>
+        <div class="tt-topic-alert tt-alert-default" role="alert">
+            <a (click)="goToAdminNoti()" target="_blank">Thông báo mới từ Quản trị viên, bấm vào đây để xem.</a>
+            <!-- are added recently, click here to load them. -->
+        </div>
+        <div class="tt-item tt-itemselect" *ngFor="let post of listPostByAdmin; let i = index">
+            <div class="tt-col-avatar">
+                <!-- <svg class="tt-icon"> -->
+                <!-- <use xlink:href="#icon-ava-k"></use> -->
+
+                <!-- </svg> -->
+                <img src="{{post.user.avatar}}" alt="" style="height: 50px; border-radius: 50%;">
+            </div>
+            <div class="tt-col-description">
+                <h6 class="tt-title"><a [routerLink]="['/users/post', post.id]">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-pinned"></use>
+                        </svg>
+                        {{post?.title}}
+                    </a></h6>
+                <div class="row align-items-center no-gutters">
+                    <div class="col-11">
+                        <ul class="tt-list-badge">
+                            <!-- <li class="show-mobile"><a href="#"><span class="tt-color01 tt-badge">politics</span></a>
+                            </li> -->
+                            <li><a [routerLink]="['/users/user', post.user?.id]"><span
+                                        class="tt-badge">{{post.user?.username}}</span></a></li>
+                            <!-- <li><a href="#"><span class="tt-badge">authors</span></a></li> -->
+                        </ul>
+                    </div>
+                    <div class="col-1 ml-auto show-mobile">
+                        <div class="tt-value">{{post.createAt | date:"dd"}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tt-col-description"><span class="tt-color0{{i}} tt-badge" style="color: white;">{{post.category.name}}</span></div>
+            <!-- <div class="tt-col-value hide-mobile">985</div> -->
+            <div *ngIf="post.description == '1'" class="tt-col-value tt-color-select hide-mobile">Bài viết</div>
+            <div *ngIf="post.description == '2'" class="tt-col-value tt-color-select hide-mobile">Câu hỏi</div>
+            <div *ngIf="post.description == null || post.description == undefined" class="tt-col-value tt-color-select hide-mobile">Khác</div>
+            <!-- <div class="tt-col-value hide-mobile">15.1k</div> -->
+            <div class="tt-col-value hide-mobile">{{post.createAt | date:'yyyy-MM-dd' }}</div>
+        </div>
+        <!-- POST BY USER -->
+        <div class="tt-item"
+            *ngFor="let postByUser of listPost | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total}; let i = index">
+            <div class="tt-col-avatar">
+                <!-- <svg class="tt-icon">
+                    <use xlink:href="#icon-ava-c"></use>
+                </svg> -->
+                <img src="{{postByUser.user?.avatar}}" alt="" style="height: 50px; border-radius: 50%;">
+            </div>
+            <div class="tt-col-description">
+                <h6 class="tt-title"><a [routerLink]="['/users/post', postByUser.id]">
+                        {{postByUser.title}}
+                    </a></h6>
+                <div class="row align-items-center no-gutters">
+                    <div class="col-11">
+                        <ul class="tt-list-badge">
+                            <!-- <li class="show-mobile"><a href="#"><span class="tt-color04 tt-badge">pets</span></a> -->
+                            <!-- </li> -->
+                            <li><a [routerLink]="['/users/user',postByUser.user?.id]"><span
+                                        class="tt-badge">{{postByUser.user?.username}}</span></a></li>
+                            <!-- <li><a href="#"><span class="tt-badge">photodune</span></a></li> -->
+                        </ul>
+                    </div>
+                    <div class="col-1 ml-auto show-mobile">
+                        <div class="tt-value">{{postByUser.createAt | date:"dd"}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tt-col-description"><span class="tt-color0{{i}} tt-badge" style="color: white">{{postByUser.category?.name}}</span></div>
+            <!-- <div class="tt-col-category tt-color0{{i}}">{{postByUser.category?.name}}</div> -->
+            <!-- <div class="tt-col-value hide-mobile">985</div> -->
+            <div *ngIf="postByUser.description == '1'" class="tt-col-value tt-color-select hide-mobile">Bài viết</div>
+            <div *ngIf="postByUser.description == '2'" class="tt-col-value tt-color-select hide-mobile">Câu hỏi</div>
+            <div *ngIf="postByUser.description == null || postByUser.description == undefined || postByUser.description == ''" class="tt-col-value tt-color-select hide-mobile">Khác</div>
+            <!-- <div class="tt-col-value hide-mobile">15.1k</div> -->
+            <div class="tt-col-value hide-mobile">{{postByUser.createAt | date:'yyyy-MM-dd'}}</div>
+        </div>
+        <div class="tt-row-btn">
+            <!-- <button type="button" class="btn-icon js-topiclist-showmore">
+                <svg class="tt-icon">
+                    <use xlink:href="#icon-load_lore_icon"></use>
+                </svg>
+            </button> -->
+            <!-- <mat-paginator [length]="totalCount" [pageSize]="paginationService.pageCount"
+                [pageSizeOptions]="paginationService.selectItemsPerPage" aria-label="Select page"
+                (page)="onPageSwitch.emit($event)">
+            </mat-paginator> -->
+            <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+        </div>
+
+    </div>
+</div>

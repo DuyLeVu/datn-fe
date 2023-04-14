@@ -1,0 +1,233 @@
+<main id="tt-pageContent" class="tt-offset-small">
+    <div class="tt-wrapper-section">
+        <div class="container">
+            <div class="tt-user-header">
+                <div class="tt-col-avatar">
+                    <div class="tt-icon">
+                        <!-- <svg class="tt-icon">
+                          <use xlink:href="#icon-ava-d"></use>
+                        </svg> -->
+                        <img src="{{user.avatar}}" alt="" style="height: 50px; border-radius: 50%;">
+                    </div>
+                </div>
+                <div class="tt-col-title">
+                    <div class="tt-title">
+                        <a href="#">{{user.fullName}}</a>
+                    </div>
+                    <!-- <ul class="tt-list-badge">
+                        <li><a href="#"><span class="tt-color14 tt-badge">LVL : 26</span></a></li>
+                    </ul> -->
+                </div>
+                <div class="tt-col-btn" id="js-settings-btn">
+                    <div class="tt-list-btn">
+                        <a (click)="openSettingForm()" class="tt-btn-icon"  *ngIf="this.user.id == this.curentUserFromLocalStorage.id">
+                            <svg class="tt-icon">
+                                <use xlink:href="#icon-settings_fill"></use>
+                            </svg>
+                        </a>
+                        <!-- <a href="#" class="btn btn-primary">Message</a>
+                        <a href="#" class="btn btn-secondary">Follow</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- <div class="tt-tab-wrapper"> -->
+           
+            <router-outlet></router-outlet>
+        <!-- </div> -->
+    </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="settingForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông Tin Cá Nhân</h5>
+                <button (click)="resetForm()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-default" [formGroup]="updateForm" (ngSubmit)="updateProfileUser()">
+                <div class="modal-body">
+                    <div class="tt-form-upload">
+                        <div class="form-group">
+                        <div class="row no-gutter">
+                            <div class="col-auto">
+                                <div class="tt-avatar">
+                                    <!-- <svg>
+                                  <use xlink:href="#icon-ava-d"></use>
+                                </svg> -->
+                                    <img src="{{user.avatar}}" alt="" style="height: 150px; border-radius: 50%;">
+                                </div>
+                            </div>
+                           
+                            <div class="col-auto ml-auto">
+                                <label for="avatar">Thay đổi ảnh đại diện</label><br>
+                                <!-- <a href="#" class="btn btn-primary">Thay đổi</a> -->
+                                <input type="file"
+                                id="avatar"
+                                #userPhoto
+                                (change)="onFileSelected($event)"
+                                name="image"
+                                autocomplete="off" />
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsUserName">Tên tài khoản</label>
+                        <input type="text" name="name" class="form-control" id="settingsUserName"
+                            value="{{user.username}}" readonly>
+                    </div>
+                    <!-- <div class="form-group">
+                    <label for="settingsUserPassword">Password</label>
+                   <input type="password" name="name" class="form-control" id="settingsUserPassword" placeholder="************">
+                </div> -->
+                    <div class="form-group">
+                        <label for="settingsUserLocation"><span class="required-asterisk"
+                                style="color: red;">*</span>Tên hiển thị</label>
+                        <input type="text" name="name" class="form-control" formControlName="fullName"
+                            id="settingsUserLocation" placeholder="Tên hiển thị">
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['fullName'].errors?.['required']
+                            && updateForm.controls['fullName'].touched">Tên hiển thị là bắt buộc
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['fullName'].errors?.['pattern']
+         && updateForm.controls['fullName'].touched">Tên hiển thị không hợp lệ
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsUserWebsite"><span class="required-asterisk"
+                                style="color: red;">*</span>Giới tính</label>
+                        <!-- <input type="text" name="name" class="form-control" id="settingsUserWebsite" placeholder="Chọn"> -->
+                        <select class="form-control" formControlName="gender">
+                            <!-- <option selected>Chọn</option> -->
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                            <option value="other">Khác</option>
+                        </select>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['gender'].errors?.['required']
+                            && updateForm.controls['gender'].touched">Giới tính là bắt buộc
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="settingsUserLocation"><span class="required-asterisk"
+                                style="color: red;">*</span>Ngày sinh</label>
+                        <div class="input-group">
+                            <input class="form-control" formControlName="dateOfBirth" placeholder="yyyy-mm-dd" name="dp"
+                                [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                    type="button"></button>
+                            </div>
+                            <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['dateOfBirth'].errors?.['required']
+                            && updateForm.controls['dateOfBirth'].touched">Ngày sinh là bắt buộc
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="settingsUserWebsite"><span class="required-asterisk" style="color: red;">*</span>Email</label>
+                        <input type="text" name="name" class="form-control" formControlName="email"
+                            id="settingsUserWebsite" placeholder="Email">
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['email'].errors?.['required']
+                            && updateForm.controls['email'].touched">Email là bắt buộc
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['email'].errors?.['email']
+          && updateForm.controls['email'].touched">Email không hợp lệ
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsUserWebsite"><span class="required-asterisk" style="color: red;">*</span>Số
+                            điện thoại</label>
+                        <input type="text" name="name" class="form-control" formControlName="phoneNumber"
+                            id="settingsUserWebsite" placeholder="Số điện thoại">
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['phoneNumber'].errors?.['required']
+                            && updateForm.controls['phoneNumber'].touched">Số điện thoại là bắt buộc
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="updateForm.controls['phoneNumber'].errors?.['pattern']
+          && updateForm.controls['phoneNumber'].touched">Số điện thoại không hợp lệ
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="settingsUserAbout">About</label>
+                        <textarea name="" placeholder="Few words about you" class="form-control"
+                            id="settingsUserAbout"></textarea>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="settingsUserAbout">Notify me via Email</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="settingsCheckBox01" name="checkbox">
+                            <label for="settingsCheckBox01">
+                                <span class="check"></span>
+                                <span class="box"></span>
+                                <span class="tt-text">When someone replies to my thread</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="settingsCheckBox02" name="checkbox">
+                            <label for="settingsCheckBox02">
+                                <span class="check"></span>
+                                <span class="box"></span>
+                                <span class="tt-text">When someone likes my thread or reply</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="settingsCheckBox03" name="checkbox">
+                            <label for="settingsCheckBox03">
+                                <span class="check"></span>
+                                <span class="box"></span>
+                                <span class="tt-text">When someone mentions me</span>
+                            </label>
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-group">
+                    <a href="#" class="btn btn-secondary">Save</a>
+                </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="resetForm()">Thoát</button>
+                    <button type="submit" class="btn btn-secondary" style="margin-left: 10px;">Cập nhật</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="updateUserProfileSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateSuccess1">Cập nhật thông tin thành công. Vui lòng chờ ...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Bạn đã cập nhật thông tin cá nhân thành công !</b>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="updateUserProfileError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerFail1">Lỗi khi cập nhật thông tin cá nhân !</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{error}}
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

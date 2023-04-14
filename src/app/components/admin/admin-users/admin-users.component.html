@@ -1,0 +1,49 @@
+<!--<link rel="stylesheet" href="../assets/vendor/fontawesome-free/css/all.min.css">-->
+<!--<link rel="stylesheet" href="../assets/css/sb-admin-2.min.css">-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+<div class="row ml-2 mr-2 mt-5">
+  <div class="card shadow mb-4 p-3" style="width: 100%;">
+    <h2 style="text-align: center">Danh sách người dùng</h2>
+    <table class="table table-striped">
+
+      <thead>
+      <tr style="font-weight: bold; color: black">
+        <th scope="col">Id</th>
+        <th scope="col">Tài khoản</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">Email</th>
+        <th scope="col">Số bình luận</th>
+        <th scope="col">Số bài viết</th>
+        <th scope="col">Số câu hỏi</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of listUser | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total}; let i = index">
+        <th scope="row">{{user.id}}</th>
+        <td><a [routerLink]="['/users/user-info', user.id]" target="_blank">{{user.username}}</a></td>
+        <td>{{user.fullName}}</td>
+        
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.comments}}</td>
+        <td>{{user.posts}}</td>
+        <td>{{user.questions}}</td>
+        <!-- <td >
+          <button *ngIf="user.status !='2'" class="btn btn-outline-success" (click)="confirmDA(user)">Up to DA</button>
+        </td>
+        <td>
+          <button class="btn btn-outline-secondary" *ngIf="user.roles.length ==1" (click)="confirmA(user)">Up to Admin</button>
+        </td> -->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 align-content-center">
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+  </div>
+</div>

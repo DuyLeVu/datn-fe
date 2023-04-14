@@ -1,0 +1,279 @@
+<main id="tt-pageContent">
+    <div class="container">
+        <div class="tt-wrapper-inner">
+            <h1 class="tt-title-border">
+                Tạo bài viết
+            </h1>
+            <form class="form-default form-create-topic" [formGroup]="createPostForm" (ngSubmit)="savePost()">
+                <div class="form-group">
+                    <label for="inputTopicTitle"><span class="required-asterisk" style="color: red;">*</span>Tiêu đề bài
+                        viết</label>
+                    <div class="tt-value-wrapper">
+                        <input type="text" name="name" class="form-control" id="inputTopicTitle"
+                            placeholder="--Tiêu đề bài viết--" formControlName="title">
+                        <div class="alert alert-danger mt-1" role="alert" style="color: red"
+                            *ngIf="createPostForm.controls['title'].errors?.['required'] && createPostForm.controls['title'].touched">
+                            Bạn chưa nhập tiêu đề! *VD: Bạn có thể nêu tóm tắt vấn đề bạn gặp phải, tên lỗi, tên
+                            framework.. để
+                            tiện cho quá trình tìm kiếm.
+                        </div>
+                        <div class="alert alert-danger mt-1" role="alert" style="color: red"
+                            *ngIf="createPostForm.controls['title'].errors?.['whitespace'] && createPostForm.controls['title'].touched">
+                            Tiêu đề không hợp lệ ! *Vui lòng nhập lại
+                        </div>
+                        <span class="tt-value-input">99</span>
+                    </div>
+                    <!-- <div class="tt-note">Describe your topic well, while keeping the subject as short as possible.</div>    -->
+                </div>
+                <div class="form-group">
+                    <label><span class="required-asterisk" style="color: red;">*</span>Tóm tắt bài viết</label>
+                    <!-- <div class="tt-js-active-btn tt-wrapper-btnicon">
+                        <div class="row tt-w410-col-02">
+                            <div class="col-4 col-lg-3 col-xl-2">
+                                <a href="#" class="tt-button-icon">
+                                    <span class="tt-icon">
+                                        <svg>
+                                            <use xlink:href="#icon-discussion"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="tt-text">Discussion</span>
+                                </a>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xl-2">
+                                <a href="#" class="tt-button-icon">
+                                    <span class="tt-icon">
+                                        <svg>
+                                            <use xlink:href="#Question"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="tt-text">Question</span>
+                                </a>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xl-2">
+                                <a href="#" class="tt-button-icon">
+                                    <span class="tt-icon">
+                                        <svg>
+                                            <use xlink:href="#Poll"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="tt-text">Poll</span>
+                                </a>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xl-2">
+                                <a href="#" class="tt-button-icon">
+                                    <span class="tt-icon">
+                                        <svg>
+                                            <use xlink:href="#icon-gallery"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="tt-text">Gallery</span>
+                                </a>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xl-2">
+                                <a href="#" class="tt-button-icon">
+                                    <span class="tt-icon">
+                                        <svg>
+                                            <use xlink:href="#Video"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="tt-text">Video</span>
+                                </a>
+                            </div>
+                            <div class="col-4 col-lg-3 col-xl-2">
+                                <a href="#" class="tt-button-icon">
+                                    <span class="tt-icon">
+                                        <svg>
+                                            <use xlink:href="#Others"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="tt-text">Other</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="inputTopicTitle"
+                            placeholder="--Tóm tắt nội dung bài viết của bạn--" formControlName="content">
+                    </div>
+                    <div class="alert alert-danger mt-1" role="alert" style="color: red"
+                        *ngIf="createPostForm.controls['content'].errors?.['required'] && createPostForm.controls['content'].touched">
+                        Bạn chưa nhập tóm tắt! *VD: Bạn có thể nêu tóm tắt vấn đề bạn gặp phải, tên lỗi, tên framework..
+                        để
+                        tiện cho quá trình tìm kiếm.
+                    </div>
+                    <div class="alert alert-danger mt-1" role="alert" style="color: red"
+                        *ngIf="createPostForm.controls['content'].errors?.['whitespace'] && createPostForm.controls['content'].touched">
+                        Tóm tắt không hợp lệ ! *Vui lòng nhập lại
+                    </div>
+                </div>
+                <div class="pt-editor form-group">
+                    <h6 class="pt-title">Nội dung bài viết</h6>
+                    <!-- <div class="pt-row">
+                        <div class="col-left">
+                            <ul class="pt-edit-btn">
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-quote"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-bold"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-italic"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-share_topic"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-blockquote"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-performatted"></use>
+                                        </svg>
+                                    </button></li>
+                                <li class="hr"></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-upload_files"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-bullet_list"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-heading"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-horizontal_line"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-emoticon"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-settings"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-color_picker"></use>
+                                        </svg>
+                                    </button></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" rows="5"
+                            placeholder="Lets get started"></textarea>
+                    </div> -->
+                    <div class="NgxEditor__Wrapper">
+                        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                        <ngx-editor [editor]="editor" formControlName="editorContent"> </ngx-editor>
+                    </div>
+                    <div class="alert alert-danger mt-1" role="alert" style="color: red"
+                        *ngIf="createPostForm.controls['editorContent'].errors?.['required'] && createPostForm.controls['editorContent'].touched">
+                        Bạn chưa nhập nội dung bài viết!
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inputTopicTitle"><span class="required-asterisk"
+                                    style="color: red;">*</span>Danh mục</label>
+                            <select class="form-control" formControlName="category">
+                                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}
+                                </option>
+                                <!-- <option value="Value 01">Value 01</option> -->
+                                <!-- <option value="Value 02">Value 02</option> -->
+                            </select>
+                            <div class="alert alert-danger mt-1" style="color: red;padding-left: 30px" role="alert"
+                                *ngIf="createPostForm.controls['category'].errors?.['required'] && createPostForm.controls['category'].touched">
+                                Bạn chưa chọn danh mục! Hãy chọn danh mục chính xác để thuận tiện trong quá trình tìm
+                                kiếm!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="inputTopicTags"><span class="required-asterisk"
+                                    style="color: red;">*</span>Loại</label>
+                            <select type="text" name="name" class="form-control" id="inputTopicTags"
+                                placeholder="Use comma to separate tags" formControlName="description">
+                                <option value="1">Bài viết</option>
+                                <option value="2">Câu hỏi</option>
+                            </select>
+                            <div class="alert alert-danger mt-1" style="color: red;padding-left: 30px" role="alert"
+                                *ngIf="createPostForm.controls['category'].errors?.['required'] && createPostForm.controls['category'].touched">
+                                Bạn chưa chọn thể loại cho bài viết! Hãy chọn danh mục chính xác để thuận tiện trong quá
+                                trình tìm
+                                kiếm!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto ml-md-auto">
+                        <!-- <a href="#" class="btn btn-secondary btn-width-lg">Create Post</a> -->
+                        <input type="submit" class="btn btn-secondary btn-width-lg" value="Xuất bản bài viết">
+                        <!-- <button mat-raised-button color = "primary" type="submit" [disabled]="createPostForm.invalid">Create post</button> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="addNewPostSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerSuccess1">Thêm mới bài viết thành công. Vui lòng chờ ...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Cảm ơn bạn đã đóng góp một bài viết mới !</b>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="createPost-Error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerFail1">Lỗi khi tạo bài viết mới!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{error}}
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

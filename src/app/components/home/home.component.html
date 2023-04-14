@@ -1,0 +1,585 @@
+<!-- tt-mobile menu -->
+<nav class="panel-menu" id="mobile-menu">
+    <ul>
+
+    </ul>
+    <div class="mm-navbtn-names">
+        <div class="mm-closebtn">
+            Close
+            <div class="tt-icon">
+                <svg>
+                    <use xlink:href="#icon-cancel"></use>
+                </svg>
+            </div>
+        </div>
+        <div class="mm-backbtn">Back</div>
+    </div>
+</nav>
+<header id="tt-header">
+    <div class="container">
+        <div class="row tt-row no-gutters">
+            <div class="col-auto">
+                <!-- toggle mobile menu -->
+                <a class="toggle-mobile-menu" href="#">
+                    <svg class="tt-icon">
+                        <use xlink:href="#icon-menu_icon"></use>
+                    </svg>
+                </a>
+                <!-- /toggle mobile menu -->
+                <!-- logo -->
+                <div class="tt-logo">
+                    <a routerLink="/users"><img src="../../../assets/images/logo.png" alt=""></a>
+                </div>
+                <!-- /logo -->
+                <!-- desctop menu -->
+                <div class="tt-desktop-menu">
+                    <nav>
+                        <ul>
+                            <li><a [routerLink]="['/users/categories']"><span>Danh mục</span></a>
+                                <!-- <ul>
+                                    <li *ngFor="let category of categories">
+
+                                        <a [routerLink]="['/users/category', category.id]">{{category.name}}</a>
+                                    </li>
+                                </ul> -->
+                            </li>
+                            <li><a [routerLink]="['/users/questions']"><span>Hỏi đáp</span></a></li>
+                            <li><a [routerLink]="['/users/new-post']"><span>Viết bài</span></a></li>
+                            <li>
+                                <a href="page-single-user.html"><span>Góc học tập</span></a>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="page-single-topic.html">Single Topic</a></li>
+                                    <li><a href="page-create-topic.html">Create Topic</a></li>
+                                    <li><a href="page-single-user.html">Single User Activity</a></li>
+                                    <li><a href="page-single_threads.html">Single User Threads</a></li>
+                                    <li><a href="page-single_replies.html">Single User Replies</a></li>
+                                    <li><a href="page-single_followers.html">Single User Followers</a></li>
+                                    <li><a href="page-single_categories.html">Single User Categories</a></li>
+                                    <li><a href="page-single_settings.html">Single User Settings</a></li>
+                                    <li><a href="page-signup.html">Sign up</a></li>
+                                    <li><a href="page-login.html">Log in</a></li>
+                                    <li><a href="page-categories.html">Categories</a></li>
+                                    <li><a href="page-categories-single.html">Single Category</a></li>
+                                    <li><a href="page-tabs.html">About</a></li>
+                                    <li><a href="page-tabs_guidelines.html">Guidelines</a></li>
+                                    <li><a href="_demo_modal-advancedSearch.html">Advanced Search</a></li>
+                                    <li><a href="error404.html">Error 404</a></li>
+                                    <li><a href="_demo_modal-age-confirmation.html">Age Verification</a></li>
+                                    <li><a href="_demo_modal-level-up.html">Level up Notification</a></li>
+                                    <li><a href="messages-page.html">Message</a></li>
+                                    <li><a href="messages-compose.html">Message Compose</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /desctop menu -->
+                <!-- tt-search -->
+                <div class="tt-search">
+                    <!-- toggle -->
+                    <button class="tt-search-toggle" data-toggle="modal" data-target="#modalAdvancedSearch">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-search"></use>
+                        </svg>
+                    </button>
+                    <!-- /toggle -->
+                    <form class="search-wrapper">
+                        <div class="search-form">
+                            <input type="text" class="tt-search__input" placeholder="Tìm kiếm">
+                            <button class="tt-search__btn" type="submit">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-search"></use>
+                                </svg>
+                            </button>
+                            <button class="tt-search__close">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#cancel"></use>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="search-results">
+                            <div class="tt-search-scroll">
+                                <ul>
+                                    <li>
+                                        <a href="page-single-topic.html">
+                                            <h6 class="tt-title">Rdr2 secret easter eggs</h6>
+                                            <div class="tt-description">
+                                                Here’s what I’ve found in Red Dead Redem..
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="page-single-topic.html">
+                                            <h6 class="tt-title">Top 10 easter eggs in Red Dead Rede..</h6>
+                                            <div class="tt-description">
+                                                You can find these easter eggs in Red Dea..
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="page-single-topic.html">
+                                            <h6 class="tt-title">Red Dead Redemtion: Arthur Morgan..</h6>
+                                            <div class="tt-description">
+                                                Here’s what I’ve found in Red Dead Redem..
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="page-single-topic.html">
+                                            <h6 class="tt-title">Rdr2 secret easter eggs</h6>
+                                            <div class="tt-description">
+                                                Here’s what I’ve found in Red Dead Redem..
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="page-single-topic.html">
+                                            <h6 class="tt-title">Top 10 easter eggs in Red Dead Rede..</h6>
+                                            <div class="tt-description">
+                                                You can find these easter eggs in Red Dea..
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="page-single-topic.html">
+                                            <h6 class="tt-title">Red Dead Redemtion: Arthur Morgan..</h6>
+                                            <div class="tt-description">
+                                                Here’s what I’ve found in Red Dead Redem..
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="button" class="tt-view-all" data-toggle="modal"
+                                data-target="#modalAdvancedSearch">Advanced Search</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tt-search -->
+            </div>
+            <div class="col-auto ml-auto" *ngIf="this.currentUser == null">
+                <div class="tt-account-btn">
+                    <a routerLink="/login" class="btn btn-primary">Log in</a>
+                    <a routerLink="/register" class="btn btn-secondary">Sign up</a>
+                </div>
+            </div>
+        
+            <div class="tt-user-info d-flex justify-content-center" *ngIf="this.currentUser != null">
+                <!-- <div class="tt-user-info d-flex justify-content-center"> -->
+                <!-- <a href="#" class="tt-btn-icon">
+                        <i class="tt-icon"><svg><use xlink:href="#icon-notification"></use></svg></i>
+                   </a>
+                   <div class="tt-avatar-icon tt-size-md">
+                       <i class="tt-icon"><svg><use xlink:href="#icon-ava-a"></use></svg></i>
+                   </div> -->
+                   
+                <div class="tt-desktop-menu ">
+                    <nav>
+                        <ul>
+                            <li>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/users/user', currentUserId]">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                                        </svg>
+                                    </span>&ensp;{{currentUserName}}</a>
+                                <ul>
+                                    <li><a [routerLink]="['/users/user', currentUserId]"><span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                    height="16" fill="currentColor" class="bi bi-person-circle"
+                                                    viewBox="0 0 16 16">
+                                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                                </svg>
+                                                Trang cá nhân</span></a></li>
+                                    <li><a (click)="showChangePasswordModal()">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                                                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                                              </svg>
+                                        </span>
+                                        Đổi mật khẩu</a></li>
+                                    <li><a (click)="logout()">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                              </svg>
+                                        </span>
+                                        Thoát</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</header>
+<main id="tt-pageContent" class="tt-offset-small">
+    <!-- <app-overview [categoryId]="categoryId"></app-overview> -->
+    <router-outlet></router-outlet>
+</main>
+<!-- <div id="js-popup-settings" class="tt-popup-settings">
+    <div class="tt-btn-col-close">
+        <a href="#">
+            <span class="tt-icon-title">
+                <svg>
+                    <use xlink:href="#icon-settings_fill"></use>
+                </svg>
+            </span>
+            <span class="tt-icon-text">
+                Settings
+            </span>
+            <span class="tt-icon-close">
+                <svg>
+                    <use xlink:href="#icon-cancel"></use>
+                </svg>
+            </span>
+        </a>
+    </div>
+    <form class="form-default">
+        <div class="tt-form-upload">
+            <div class="row no-gutter">
+                <div class="col-auto">
+                    <div class="tt-avatar">
+                        <svg>
+                            <use xlink:href="#icon-ava-d"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-auto ml-auto">
+                    <a href="#" class="btn btn-primary">Upload Picture</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="settingsUserName">Username</label>
+            <input type="text" name="name" class="form-control" id="settingsUserName" placeholder="azyrusmax">
+        </div>
+        <div class="form-group">
+            <label for="settingsUserEmail">Email</label>
+            <input type="text" name="name" class="form-control" id="settingsUserEmail" placeholder="Sample@sample.com">
+        </div>
+        <div class="form-group">
+            <label for="settingsUserPassword">Password</label>
+            <input type="password" name="name" class="form-control" id="settingsUserPassword"
+                placeholder="************">
+        </div>
+        <div class="form-group">
+            <label for="settingsUserLocation">Location</label>
+            <input type="text" name="name" class="form-control" id="settingsUserLocation" placeholder="Slovakia">
+        </div>
+        <div class="form-group">
+            <label for="settingsUserWebsite">Website</label>
+            <input type="text" name="name" class="form-control" id="settingsUserWebsite" placeholder="Sample.com">
+        </div>
+        <div class="form-group">
+            <label for="settingsUserAbout">About</label>
+            <textarea name="" placeholder="Few words about you" class="form-control" id="settingsUserAbout"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="settingsUserAbout">Notify me via Email</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="settingsCheckBox01" name="checkbox">
+                <label for="settingsCheckBox01">
+                    <span class="check"></span>
+                    <span class="box"></span>
+                    <span class="tt-text">When someone replies to my thread</span>
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="settingsCheckBox02" name="checkbox">
+                <label for="settingsCheckBox02">
+                    <span class="check"></span>
+                    <span class="box"></span>
+                    <span class="tt-text">When someone likes my thread or reply</span>
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="settingsCheckBox03" name="checkbox">
+                <label for="settingsCheckBox03">
+                    <span class="check"></span>
+                    <span class="box"></span>
+                    <span class="tt-text">When someone mentions me</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <a href="#" class="btn btn-secondary">Save</a>
+        </div>
+    </form>
+</div> -->
+<a [routerLink]="['/users/new-post']" class="tt-btn-create-topic">
+    <span class="tt-icon">
+        <svg>
+            <use xlink:href="#icon-create_new"></use>
+        </svg>
+    </span>
+</a>
+
+<div class="modal fade" id="modalAdvancedSearch" tabindex="-1" role="dialog" aria-label="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="tt-modal-advancedSearch">
+                <div class="tt-modal-title">
+                    <i class="pt-icon">
+                        <svg>
+                            <use xlink:href="#icon-advanced_search"></use>
+                        </svg>
+                    </i>
+                    Advanced Search
+                    <a class="pt-close-modal" href="#" data-dismiss="modal">
+                        <svg class="icon">
+                            <use xlink:href="#icon-cancel"></use>
+                        </svg>
+                    </a>
+                </div>
+                <form class="form-default">
+                    <div class="form-group">
+                        <i class="pt-customInputIcon">
+                            <svg class="tt-icon">
+                                <use xlink:href="#icon-search"></use>
+                            </svg>
+                        </i>
+                        <input type="text" name="name" class="form-control pt-customInputSearch" id="searchForum"
+                            placeholder="Search all forums">
+                    </div>
+                    <div class="form-group">
+                        <label for="searchName">Posted by</label>
+                        <input type="text" name="name" class="form-control" id="searchName" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="searchCategory">In Category</label>
+                        <input type="text" name="name" class="form-control" id="searchCategory"
+                            placeholder="Add Category">
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="searcCheckBox01" name="checkbox">
+                        <label for="searcCheckBox01">
+                            <span class="check"></span>
+                            <span class="box"></span>
+                            <span class="tt-text">Include all tags</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Only return topics/posts that...</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="searcCheckBox02" name="checkbox">
+                            <label for="searcCheckBox02">
+                                <span class="check"></span>
+                                <span class="box"></span>
+                                <span class="tt-text">I liked</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="searcCheckBox03" name="checkbox">
+                            <label for="searcCheckBox03">
+                                <span class="check"></span>
+                                <span class="box"></span>
+                                <span class="tt-text">are in my messages</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="searcCheckBox04" name="checkbox">
+                            <label for="searcCheckBox04">
+                                <span class="check"></span>
+                                <span class="box"></span>
+                                <span class="tt-text">I’ve read</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="searchTop">
+                            <option>any</option>
+                            <option>value 01</option>
+                            <option>value 02</option>
+                            <option>value 03</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="searchaTopics">Where topics</label>
+                        <select class="form-control" id="searchaTopics">
+                            <option>any</option>
+                            <option>value 01</option>
+                            <option>value 02</option>
+                            <option>value 03</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="searchAdvTime">Posted</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <select class="form-control">
+                                    <option>any</option>
+                                    <option>value 01</option>
+                                    <option>value 02</option>
+                                    <option>value 03</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" name="name" class="form-control" id="searchAdvTime"
+                                    placeholder="dd-mm-yyyy">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="minPostCount">Minimum Post Count</label>
+                        <select class="form-control" id="minPostCount">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option selected>10</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="btn btn-secondary btn-block">Search</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logout1">Đăng xuất thành công. Vui lòng chờ...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <b>See you again {{userName}}</b> -->
+                <b>Cảm ơn và hẹn gặp lại {{currentUserName}}</b>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="passwordChangeForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Đổi mật khẩu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="resetForm()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                
+            </div>
+            <form class="form-default" [formGroup]="passwordChangeForm" (ngSubmit)="changePassword()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="settingsUserName">Tên tài khoản</label>
+                        <input type="text" name="name" class="form-control" id="settingsUserName" [value]="currentUserName" readonly>
+                    </div>
+                    <!-- <div class="form-group">
+                    <label for="settingsUserPassword">Password</label>
+                   <input type="password" name="name" class="form-control" id="settingsUserPassword" placeholder="************">
+                </div> -->
+                    <div class="form-group">
+                        <label for="settingsUserLocation"><span class="required-asterisk"
+                                style="color: red;">*</span>Mật khẩu hiện tại</label>
+                        <input type="text" name="name" class="form-control" formControlName="password"
+                            id="settingsUserLocation" placeholder="******">
+                            <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['password'].errors?.['required']
+                            && passwordChangeForm.controls['password'].touched">Mật khẩu là bắt buộc!
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['password'].errors?.['minlength']
+                            && passwordChangeForm.controls['password'].touched">Mật khẩu có độ dài từ 6 - 32!
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['password'].errors?.['maxlength']
+                            && passwordChangeForm.controls['password'].touched">Mật khẩu có độ dài từ 6 - 32!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsUserLocation"><span class="required-asterisk"
+                                style="color: red;">*</span>Mật khẩu mới</label>
+                        <input type="text" name="name" class="form-control" formControlName="newPassword"
+                            id="settingsUserLocation" placeholder="******">
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['newPassword'].errors?.['required']
+                            && passwordChangeForm.controls['newPassword'].touched">Mật khẩu là bắt buộc!
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['newPassword'].errors?.['minlength']
+                            && passwordChangeForm.controls['newPassword'].touched">Mật khẩu có độ dài từ 6 - 32!
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['newPassword'].errors?.['maxlength']
+                            && passwordChangeForm.controls['newPassword'].touched">Mật khẩu có độ dài từ 6 - 32!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsUserWebsite"><span class="required-asterisk" style="color: red;">*</span>Xác nhận mật khẩu mới</label>
+                        <input type="text" name="name" class="form-control" formControlName="confirmNewPassword"
+                            id="settingsUserWebsite" placeholder="******">
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['confirmNewPassword'].errors?.['required']
+                            && passwordChangeForm.controls['confirmNewPassword'].touched">Xác nhận mật khẩu là bắt buộc!
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['confirmNewPassword'].errors?.['minlength']
+                            && passwordChangeForm.controls['confirmNewPassword'].touched">Mật khẩu có độ dài từ 6 - 32!
+                        </div>
+                        <div style="color: red;padding-left: 30px" role="alert" *ngIf="passwordChangeForm.controls['confirmNewPassword'].errors?.['maxlength']
+                            && passwordChangeForm.controls['confirmNewPassword'].touched">Mật khẩu có độ dài từ 6 - 32!
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="resetForm()">Thoát</button>
+                    <button type="submit" class="btn btn-secondary" style="margin-left: 10px;">Cập nhật mật khẩu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="changePasswordError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerFail1">Lỗi khi đổi mật khẩu!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{error}}
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="changePasswordSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateSuccess1">Cập nhật mật khẩu thành công. Vui lòng chờ ...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Bạn đã cập nhật mật khẩu thành công !</b>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <script src="../../../assets/js/bundle.js"></script> -->

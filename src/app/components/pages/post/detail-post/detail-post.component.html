@@ -1,0 +1,1207 @@
+<main id="tt-pageContent">
+    <div class="container">
+        <div class="tt-single-topic-list">
+            <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <img src="{{post?.user?.avatar}}" alt="" style="height: 50px; border-radius: 50%;">
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a [routerLink]="['/users/user',post?.user?.id]">{{post?.user?.fullName}}</a>
+                                <span>@{{post?.user?.username}}</span>
+                            </div>
+                            <span class="tt-info-time text-right">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>{{ post?.createAt | date }}
+                            </span>
+                        </div>
+                        <h1 class="tt-item-title">
+                            <span href="#">{{post?.title}}</span>
+
+                        </h1>
+                        <div class="tt-item-tag">
+                            <!-- <ul class="tt-list-badge">
+                                <li><a href="#"><span class="tt-color03 tt-badge">exchange</span></a></li>
+                                <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
+                                <li><a href="#"><span class="tt-badge">elements</span></a></li>
+                            </ul> -->
+                            <a [routerLink]="['/users/category', post?.category?.id]">{{post?.category?.name}}</a>
+
+                        </div>
+                        <div class="tt-item-info info-bottom" *ngIf="currentUser?.id == post?.user?.id">
+                            <span>{{post?.content}}</span>
+                            <!-- <a href="#" class="tt-icon-btn">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-like"></use>
+                                    </svg></i>
+                                <span class="tt-text">671</span>
+                            </a>
+                            <a href="#" class="tt-icon-btn">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-dislike"></use>
+                                    </svg></i>
+                                <span class="tt-text">39</span>
+                            </a>
+                            <a href="#" class="tt-icon-btn">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-favorite"></use>
+                                    </svg></i>
+                                <span class="tt-text">12</span>
+                            </a> -->
+                            <div class="col-separator"></div>
+                            <!-- <div class="tt-row-icon"> -->
+                            <a [routerLink]="['/users/edit',this.post?.id]" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd"
+                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                    </svg></i>
+                                <span class="tt-text">Sửa</span>
+                            </a>
+                            <!-- <div class="tt-item"> -->
+                            <a (click)="showModalDeletePost()" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path
+                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd"
+                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                    </svg></i>
+                                <span class="tt-text">Xoá</span>
+                            </a>
+                            <!-- </div> -->
+
+                            <!-- <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-share"></use>
+                                    </svg></i>
+                            </a>
+                            <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-flag"></use>
+                                    </svg></i>
+                            </a>
+                            <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-reply"></use>
+                                    </svg></i>
+                            </a> -->
+
+                        </div>
+
+
+                    </div>
+                    <!-- <div class="tt-item-description">
+                        <h6 class="tt-title">Get ready for Movember!</h6>
+                        <p>
+                            It’s time to channel your inner Magnum P.I., Ron Swanson or Hercule Poroit! It’s the time that all guys (or gals) love and all our
+                            partners hate It’s Movember!
+                        </p>
+                        <p>
+                            Throughout November we will be inviting all community members to help raise awareness and funds for the lives of men affected
+                            by cancer and mental health problems via the Movember Foundation 10.
+                        </p>
+                        <h6 class="tt-title">How Does it Work?</h6>
+                        <p>
+                            Authors and customers with facial hair unite! Simply grow, groom, and share your facial hair during November! Even females can enter if they desire (be creative, ladies!). Be inspired by checking out last year’s highlights 28.
+                        </p>
+                    </div> -->
+                    <div class="tt-item-description">
+                        <div [innerHTML]="detail"></div>
+                    </div>
+                    <div class="tt-item-info info-bottom">
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-like"></use>
+                                </svg></i>
+                            <span class="tt-text">671</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-dislike"></use>
+                                </svg></i>
+                            <span class="tt-text">39</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-favorite"></use>
+                                </svg></i>
+                            <span class="tt-text">12</span>
+                        </a>
+                        <div class="col-separator"></div>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-flag"></use>
+                                </svg></i>
+                        </a>
+                        <a [href]="url" (click)="shareSocial(this.post!)" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-reply"></use>
+                                </svg></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="tt-item">
+                <div class="tt-info-box">
+                    <h6 class="tt-title">Thread Status</h6>
+                    <div class="tt-row-icon">
+                        <div class="tt-item">
+                            <a href="#" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-reply"></use>
+                                    </svg></i>
+                                <span class="tt-text">283</span>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-view"></use>
+                                    </svg></i>
+                                <span class="tt-text">10.5k</span>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-user"></use>
+                                    </svg></i>
+                                <span class="tt-text">168</span>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-like"></use>
+                                    </svg></i>
+                                <span class="tt-text">2.4k</span>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-favorite"></use>
+                                    </svg></i>
+                                <span class="tt-text">951</span>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class="tt-icon-btn tt-position-bottom">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-share"></use>
+                                    </svg></i>
+                                <span class="tt-text">32</span>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                    <h6 class="tt-title">Frequent Posters</h6>
+                    <div class="tt-row-icon">
+                        <div class="tt-item">
+                            <a href="#" class=" tt-icon-avatar">
+                                <svg>
+                                    <use xlink:href="#icon-ava-d"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class=" tt-icon-avatar">
+                                <svg>
+                                    <use xlink:href="#icon-ava-t"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class=" tt-icon-avatar">
+                                <svg>
+                                    <use xlink:href="#icon-ava-k"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class=" tt-icon-avatar">
+                                <svg>
+                                    <use xlink:href="#icon-ava-n"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class=" tt-icon-avatar">
+                                <svg>
+                                    <use xlink:href="#icon-ava-a"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class=" tt-icon-avatar">
+                                <svg>
+                                    <use xlink:href="#icon-ava-c"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="tt-item">
+                            <a href="#" class=" tt-icon-avatar">
+                                <svg>
+                                    <use xlink:href="#icon-ava-h"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row-object-inline form-default">
+                        <h6 class="tt-title">Sort replies by:</h6>
+                        <ul class="tt-list-badge tt-size-lg">
+                            <li><a href="#"><span class="tt-badge">Recent</span></a></li>
+                            <li><a href="#"><span class="tt-color02 tt-badge">Most Liked</span></a></li>
+                            <li><a href="#"><span class="tt-badge">Longest</span></a></li>
+                            <li><a href="#"><span class="tt-badge">Shortest</span></a></li>
+                            <li><a href="#"><span class="tt-badge">Accepted Answers</span></a></li>
+                        </ul>
+                        <select class="tt-select form-control">
+                            <option value="Recent">Recent</option>
+                            <option value="Most Liked">Most Liked</option>
+                            <option value="Longest">Longest</option>
+                            <option value="Shortest">Shortest</option>
+                            <option value="Accepted Answer">Accepted Answer</option>
+                        </select>
+                    </div>
+                </div>
+            </div> -->
+            <div class="tt-topic-list tt-ofset-30">
+                <div class="tt-list-search">
+                    <div class="tt-title">Bài viết mới nhất từ {{this.post?.user?.fullName}}</div>
+                    <!-- tt-search -->
+                    <!-- <div class="tt-search">
+                        <form class="search-wrapper">
+                            <div class="search-form">
+                                <input type="text" class="tt-search__input" placeholder="Search for topics">
+                                <button class="tt-search__btn" type="submit">
+                                    <svg class="tt-icon">
+                                        <use xlink:href="#icon-search"></use>
+                                    </svg>
+                                </button>
+                                <button class="tt-search__close">
+                                    <svg class="tt-icon">
+                                        <use xlink:href="#icon-cancel"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div> -->
+                    <!-- /tt-search -->
+                </div>
+                <div class="tt-list-header tt-border-bottom">
+                    <div class="tt-col-topic">Bài viết</div>
+                    <div class="tt-col-category">Danh mục</div>
+                    <div class="tt-col-value hide-mobile">Loại</div>
+                    <div class="tt-col-value hide-mobile">Replies</div>
+                    <div class="tt-col-value hide-mobile">Views</div>
+                    <div class="tt-col-value">Ngày</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-col-avatar">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-ava-n"></use>
+                        </svg>
+                    </div>
+                    <div class="tt-col-description">
+                        <h6 class="tt-title"><a href="#">
+                                Does Envato act against the authors of Envato markets?
+                            </a></h6>
+                        <div class="row align-items-center no-gutters hide-desktope">
+                            <div class="col-11">
+                                <ul class="tt-list-badge">
+                                    <li class="show-mobile"><a href="#"><span
+                                                class="tt-color05 tt-badge">music</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-1 ml-auto show-mobile">
+                                <div class="tt-value">1d</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tt-col-category"><span class="tt-color05 tt-badge">music</span></div>
+                    <div class="tt-col-value hide-mobile">358</div>
+                    <div class="tt-col-value tt-color-select hide-mobile">68</div>
+                    <div class="tt-col-value hide-mobile">8.3k</div>
+                    <div class="tt-col-value hide-mobile">1d</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-col-avatar">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-ava-h"></use>
+                        </svg>
+                    </div>
+                    <div class="tt-col-description">
+                        <h6 class="tt-title"><a href="#">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-locked"></use>
+                                </svg>
+                                We Want to Hear From You! What Would You Like?
+                            </a></h6>
+                        <div class="row align-items-center no-gutters hide-desktope">
+                            <div class="col-11">
+                                <ul class="tt-list-badge">
+                                    <li class="show-mobile"><a href="#"><span
+                                                class="tt-color06 tt-badge">movies</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-1 ml-auto show-mobile">
+                                <div class="tt-value">2d</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tt-col-category"><span class="tt-color06 tt-badge">movies</span></div>
+                    <div class="tt-col-value hide-mobile">674</div>
+                    <div class="tt-col-value tt-color-select  hide-mobile">29</div>
+                    <div class="tt-col-value hide-mobile">1.3k</div>
+                    <div class="tt-col-value hide-mobile">2d</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-col-avatar">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-ava-j"></use>
+                        </svg>
+                    </div>
+                    <div class="tt-col-description">
+                        <h6 class="tt-title"><a href="#">
+                                Seeking partner backend developer
+                            </a></h6>
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-11">
+                                <ul class="tt-list-badge">
+                                    <li class="show-mobile"><a href="#"><span
+                                                class="tt-color03 tt-badge">exchange</span></a></li>
+                                    <li><a href="#"><span class="tt-badge">themeforest</span></a></li>
+                                    <li><a href="#"><span class="tt-badge">elements</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-1 ml-auto show-mobile">
+                                <div class="tt-value">2d</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tt-col-category"><span class="tt-color13 tt-badge">movies</span></div>
+                    <div class="tt-col-value hide-mobile">278</div>
+                    <div class="tt-col-value tt-color-select  hide-mobile">27</div>
+                    <div class="tt-col-value hide-mobile">1.4k</div>
+                    <div class="tt-col-value hide-mobile">2d</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-col-avatar">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-ava-t"></use>
+                        </svg>
+                    </div>
+                    <div class="tt-col-description">
+                        <h6 class="tt-title"><a href="#">
+                                Cannot customize my intro
+                            </a></h6>
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-11">
+                                <ul class="tt-list-badge">
+                                    <li class="show-mobile"><a href="#"><span class="tt-color07 tt-badge">video
+                                                games</span></a></li>
+                                    <li><a href="#"><span class="tt-badge">videohive</span></a></li>
+                                    <li><a href="#"><span class="tt-badge">photodune</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="col-1 ml-auto show-mobile">
+                                <div class="tt-value">2d</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tt-col-category"><span class="tt-color07 tt-badge">video games</span></div>
+                    <div class="tt-col-value hide-mobile">364</div>
+                    <div class="tt-col-value tt-color-select  hide-mobile">36</div>
+                    <div class="tt-col-value  hide-mobile">982</div>
+                    <div class="tt-col-value hide-mobile">2d</div>
+                </div>
+                <div class="tt-item">
+                    <div class="tt-col-avatar">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-ava-k"></use>
+                        </svg>
+                    </div>
+                    <div class="tt-col-description">
+                        <h6 class="tt-title"><a href="#">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-verified"></use>
+                                </svg>
+                                Microsoft Word and Power Point
+                            </a></h6>
+                        <div class="row align-items-center no-gutters hide-desktope">
+                            <div class="col-11">
+                                <ul class="tt-list-badge">
+                                    <li class="show-mobile"><a href="#"><span
+                                                class="tt-color08 tt-badge">youtube</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-1 ml-auto show-mobile">
+                                <div class="tt-value">3d</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tt-col-category"><span class="tt-color08 tt-badge">youtube</span></div>
+                    <div class="tt-col-value  hide-mobile">698</div>
+                    <div class="tt-col-value tt-color-select  hide-mobile">78</div>
+                    <div class="tt-col-value  hide-mobile">2.1k</div>
+                    <div class="tt-col-value hide-mobile">3d</div>
+                </div>
+                <!-- <div class="tt-row-btn">
+                    <button type="button" class="btn-icon js-topiclist-showmore">
+                        <svg class="tt-icon">
+                            <use xlink:href="#icon-load_lore_icon"></use>
+                        </svg>
+                    </button>
+                </div> -->
+            </div>
+            <!-- CREATE COMMENT -->
+            <div class="tt-wrapper-inner">
+                <form [formGroup]="commentForm" (ngSubmit)="addComment(this.post?.id, '')">
+                <div class="pt-editor form-default">
+                    <h6 class="pt-title">Bình luận</h6>
+                    <!-- <div class="pt-row">
+                        <div class="col-left">
+                            <ul class="pt-edit-btn">
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-quote"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-bold"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-italic"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-share_topic"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-blockquote"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-performatted"></use>
+                                        </svg>
+                                    </button></li>
+                                <li class="hr"></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-upload_files"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-bullet_list"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-heading"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-horizontal_line"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-emoticon"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-settings"></use>
+                                        </svg>
+                                    </button></li>
+                                <li><button type="button" class="btn-icon">
+                                        <svg class="tt-icon">
+                                            <use xlink:href="#icon-color_picker"></use>
+                                        </svg>
+                                    </button></li>
+                            </ul>
+                        </div>
+                        <div class="col-right tt-hidden-mobile">
+                            <a href="#" class="btn btn-primary">Preview</a>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" rows="5"
+                            placeholder="Lets get started" formControlName="content"></textarea>
+                    </div>
+                    <div class="pt-row">
+                        <div class="col-auto">
+                            <!-- <div class="checkbox-group">
+                                <input type="checkbox" id="checkBox21" name="checkbox" checked="">
+                                <label for="checkBox21">
+                                    <span class="check"></span>
+                                    <span class="box"></span>
+                                    <span class="tt-text">Subscribe to this topic.</span>
+                                </label>
+                            </div> -->
+                        </div>
+                        <div class="col-auto">
+                            <!-- <a href="#" class="btn btn-secondary btn-width-lg">Bình luận</a> -->
+                             <button mat-raised-button color = "primary" type="submit" [disabled]="commentForm.invalid">Bình luận</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <!-- COMMENT -->
+            <div class="tt-item" *ngFor="let comment of post?.listComment">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <!-- <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-ava-t"></use>
+                                    </svg></i> -->
+                                    <img src="{{comment?.user?.avatar}}" alt="" style="height: 50px; border-radius: 50%;">
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a href="#">{{comment.user?.username}}</a>
+                            </div>
+                            <a href="#" class="tt-info-time">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>{{comment.createAt}}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        <!-- Finally!<br>
+                        Are there any special recommendations for design or an updated guide that includes new preview
+                        sizes, including retina displays? -->
+                        {{comment.content}}
+                    </div>
+                    <div class="tt-item-info info-bottom">
+                        <a (click)="showLoadingReplyForm(this.post?.id)" class="tt-icon-btn">
+                            <!-- <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-like"></use>
+                                </svg></i> -->
+                            <span class="tt-text">Trả lời</span>
+                        </a>
+                        <!-- <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-dislike"></use>
+                                </svg></i>
+                            <span class="tt-text">39</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-favorite"></use>
+                                </svg></i>
+                            <span class="tt-text">12</span>
+                        </a> -->
+                        <div class="col-separator"></div>
+                        <!-- <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-flag"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-reply"></use>
+                                </svg></i>
+                        </a> -->
+                    </div>
+                    <div *ngIf="this.post?.id == this.tempe && this.loadingReplyForm" class="tt-wrapper-inner">
+                        <form [formGroup]="commentForm" (ngSubmit)="addComment(this.post?.id, comment.id)">
+                        <div class="pt-editor form-default">
+                            <h6 class="pt-title">Bình luận</h6>
+                            <div class="form-group">
+                                <textarea name="message" class="form-control" rows="5"
+                                    placeholder="Lets get started" formControlName="content"></textarea>
+                            </div>
+                            <div class="pt-row">
+                                <div class="col-auto">
+                                    <!-- <div class="checkbox-group">
+                                        <input type="checkbox" id="checkBox21" name="checkbox" checked="">
+                                        <label for="checkBox21">
+                                            <span class="check"></span>
+                                            <span class="box"></span>
+                                            <span class="tt-text">Subscribe to this topic.</span>
+                                        </label>
+                                    </div> -->
+                                </div>
+                                <div class="col-auto">
+                                    <!-- <a href="#" class="btn btn-secondary btn-width-lg">Bình luận</a> -->
+                                     <button mat-raised-button color = "primary" type="submit" [disabled]="commentForm.invalid">Bình luận</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="post?.listComment?.length === 0" class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                                <!-- <i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
+                                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+                                  </svg></i>
+                                  <span class="tt-text">39</span>
+                                Chưa có bình luận nào. -->
+                        
+                         <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
+                                    <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+                                  </svg>
+                                </i>
+                            <span class="tt-text">Chưa có bình luận nào.</span>
+                        </a> 
+                        </div>
+                    </div>
+                    
+                </div>
+           </div>
+           <div class="tt-item">
+           <mat-tree 
+           [dataSource]="nestedDataSource" 
+           [treeControl]="treeControl">
+                <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                    {{node.content}}
+                </mat-tree-node>
+                <mat-tree-node>
+
+                </mat-tree-node>
+                <!-- <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
+                    <div class="mat-tree-node">
+                        <button mat-icon-button matTreeNodeToggle>
+                            <mat-icon>
+                                {{nestedTreeControl.isExpanded(node) ? "expand_more": "chevron_right"}}
+                            </mat-icon>
+                        </button>
+                        {{node.content}}
+                    </div>
+                </mat-nested-tree-node> -->
+           </mat-tree>
+        </div>
+            <!-- <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-ava-k"></use>
+                                    </svg></i>
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a href="#">kolis27</a>
+                            </div>
+                            <a href="#" class="tt-info-time">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>6 Jan,2019
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        <p>
+                            It’s too big preview image, it should be smaller even five in row. On one page there are 30
+                            items to 60 pages it is 1800 items in
+                            categories eg in Add-Ons category have 22749 items, why not see all of them but only those
+                            1800 items? This is a bad thing.
+                        </p>
+                        <p>
+                            <img class="tt-offset-11" src="images/single-topic-img01.jpg" alt="">
+                        </p>
+                    </div>
+                    <div class="tt-item-info info-bottom">
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-like"></use>
+                                </svg></i>
+                            <span class="tt-text">671</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-dislike"></use>
+                                </svg></i>
+                            <span class="tt-text">39</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-favorite"></use>
+                                </svg></i>
+                            <span class="tt-text">12</span>
+                        </a>
+                        <div class="col-separator"></div>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-flag"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-reply"></use>
+                                </svg></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-ava-k"></use>
+                                    </svg></i>
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a href="#">kolis27</a>
+                            </div>
+                            <a href="#" class="tt-info-time">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>6 Jan,2019
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        <p>
+                            I do not like. Choosing a template has become more difficult.<br>Small thumbnails 80x80px
+                            were better.
+                        </p>
+                        <div class="video-container">
+                            <iframe title="YouTube video player" src="https://www.youtube.com/embed/BbW8djS7kI4"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="tt-item-info info-bottom">
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-like"></use>
+                                </svg></i>
+                            <span class="tt-text">671</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-dislike"></use>
+                                </svg></i>
+                            <span class="tt-text">39</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-favorite"></use>
+                                </svg></i>
+                            <span class="tt-text">12</span>
+                        </a>
+                        <div class="col-separator"></div>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-flag"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-reply"></use>
+                                </svg></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-ava-v"></use>
+                                    </svg></i>
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a href="#">vickey03</a>
+                            </div>
+                            <a href="#" class="tt-info-time">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>6 Jan,2019
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        Finally!<br>
+                        Are there any special recommendations for design or an updated guide that includes new preview
+                        sizes, including retina displays?
+                        <div class="topic-inner-list">
+                            <div class="topic-inner">
+                                <div class="topic-inner-title">
+                                    <div class="topic-inner-avatar">
+                                        <i class="tt-icon"><svg>
+                                                <use xlink:href="#icon-ava-s"></use>
+                                            </svg></i>
+                                    </div>
+                                    <div class="topic-inner-title"><a href="#">summit92</a></div>
+                                </div>
+                                <div class="topic-inner-description">
+                                    Finally!<br>
+                                    Are there any special recommendations for design or an updated guide that includes
+                                    new preview sizes, including retina displays?
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tt-item-info info-bottom">
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-like"></use>
+                                </svg></i>
+                            <span class="tt-text">671</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-dislike"></use>
+                                </svg></i>
+                            <span class="tt-text">39</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-favorite"></use>
+                                </svg></i>
+                            <span class="tt-text">12</span>
+                        </a>
+                        <div class="col-separator"></div>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-flag"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-reply"></use>
+                                </svg></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="tt-item tt-wrapper-success">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-ava-t"></use>
+                                    </svg></i>
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a href="#">tesla02</a>
+                                <span class="tt-color13 tt-badge">best answer</span>
+                            </div>
+                            <a href="#" class="tt-info-time">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>6 Jan,2019
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        Finally!<br>
+                        Are there any special recommendations for design or an updated guide that includes new preview
+                        sizes, including retina displays?
+                    </div>
+                    <div class="tt-item-info info-bottom">
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-like"></use>
+                                </svg></i>
+                            <span class="tt-text">671</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-dislike"></use>
+                                </svg></i>
+                            <span class="tt-text">39</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-favorite"></use>
+                                </svg></i>
+                            <span class="tt-text">12</span>
+                        </a>
+                        <div class="col-separator"></div>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-flag"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-reply"></use>
+                                </svg></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="tt-item tt-wrapper-danger">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-ava-u"></use>
+                                    </svg></i>
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a href="#">usain31</a>
+                            </div>
+                            <a href="#" class="tt-info-time">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>6 Jan,2019
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        This post has been flagged by a moderator, received too many downvotes.
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="tt-item-info info-bottom">
+                                <a href="#" class="tt-icon-btn">
+                                    <i class="tt-icon"><svg>
+                                            <use xlink:href="#icon-dislike"></use>
+                                        </svg></i>
+                                    <span class="tt-text">39</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-auto ml-auto">
+                            <a href="#" class="btn btn-primary tt-offset-27">Show Reply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header pt-noborder">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-ava-f"></use>
+                                    </svg></i>
+                            </div>
+                            <div class="tt-avatar-title">
+                                <a href="#">kolis27</a>
+                            </div>
+                            <a href="#" class="tt-info-time">
+                                <i class="tt-icon"><svg>
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg></i>6 Jan,2019
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        <p>
+                            It’s too big preview image, it should be smaller even five in row. On one page there are 30
+                            items to 60 pages it is 1800 items in categories eg in Add-Ons category have 22749 items,
+                            why not see all of them but only those 1800 items? This is a bad thing.
+                        </p>
+                        <div class="row tt-offset-37">
+                            <div class="col-lg-10">
+                                <div class="tt-gallery-layout">
+                                    <div class="tt-item">
+                                        <a href="images/single-topic-img03.jpg" class="tt-gallery-obj"><img
+                                                src="images/single-topic-img03.jpg" alt=""></a>
+                                    </div>
+                                    <div class="tt-item">
+                                        <a href="images/single-topic-img04.jpg" class="tt-gallery-obj"><img
+                                                src="images/single-topic-img04.jpg" alt=""></a>
+                                    </div>
+                                    <div class="tt-item">
+                                        <a href="images/single-topic-img05.jpg" class="tt-gallery-obj"><img
+                                                src="images/single-topic-img05.jpg" alt=""></a>
+                                    </div>
+                                    <div class="tt-item">
+                                        <a href="images/single-topic-img06.jpg" class="tt-gallery-obj"><img
+                                                src="images/single-topic-img06.jpg" alt=""></a>
+                                    </div>
+                                    <div class="tt-item">
+                                        <a href="images/single-topic-img07.jpg" class="tt-gallery-obj"><img
+                                                src="images/single-topic-img07.jpg" alt=""></a>
+                                    </div>
+                                    <div class="tt-item">
+                                        <a href="images/single-topic-img08.jpg" class="tt-gallery-obj"><img
+                                                src="images/single-topic-img08.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tt-item-info info-bottom">
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-like"></use>
+                                </svg></i>
+                            <span class="tt-text">671</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-dislike"></use>
+                                </svg></i>
+                            <span class="tt-text">39</span>
+                        </a>
+                        <a href="#" class="tt-icon-btn">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-favorite"></use>
+                                </svg></i>
+                            <span class="tt-text">12</span>
+                        </a>
+                        <div class="col-separator"></div>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-flag"></use>
+                                </svg></i>
+                        </a>
+                        <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent">
+                            <i class="tt-icon"><svg>
+                                    <use xlink:href="#icon-reply"></use>
+                                </svg></i>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <!-- <div class="tt-wrapper-inner">
+            <h4 class="tt-title-separator"><span>You’ve reached the end of replies</span></h4>
+        </div>
+        <div class="tt-topic-list">
+            <div class="tt-item tt-item-popup">
+                <div class="tt-col-avatar">
+                    <svg class="tt-icon">
+                      <use xlink:href="#icon-ava-f"></use>
+                    </svg>
+                </div>
+                <div class="tt-col-message">
+                    Looks like you are new here. Register for free, learn and contribute.
+                </div>
+                <div class="tt-col-btn">
+                    <button type="button" class="btn btn-primary">Log in</button>
+                    <button type="button" class="btn btn-secondary">Sign up</button>
+                    <button type="button" class="btn-icon">
+                        <svg class="tt-icon">
+                          <use xlink:href="#icon-cancel"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="deletePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xoá bài viết</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn thật sự muốn xoá bài viết này ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-secondary" style="margin-left: 10px;"
+                    (click)="deletePost()">Xoá</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deletePostSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerSuccess1">Xoá bài viết thành công. Vui lòng chờ ...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <b>Xoá bài viết thành công, cảm ơn sự đóng góp của bạn!</b>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deletePostError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerFail1">Xoá bài viết lỗi. Vui lòng chờ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{error}}
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
